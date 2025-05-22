@@ -1,0 +1,104 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#buttonContainer {
+    margin-top: 30px;
+    perspective: 1000px; /* Crucial for 3D effects */
+    display: flex; /* Use flexbox to center the button if it's the only child */
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; /* Give it some space */
+}
+
+/* Basic 3D button style - to be expanded */
+.button-3d {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #28a745; /* Default button color */
+    border: none;
+    border-radius: 5px;
+    transform-style: preserve-3d;
+    transform: rotateX(-10deg) rotateY(0deg); /* Initial slight tilt */
+    /* MODIFIED: Quicker transition, added text-shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer;
+    box-shadow: 0 5px 0 #1e7e34, /* Bottom shadow for 3D depth */
+                0 8px 15px rgba(0,0,0,0.3); /* General shadow */
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3); /* ADDED */
+}
+
+/* Idle animation placeholder */
+.button-3d-idle {
+    animation: idleAnimation 3s infinite ease-in-out;
+}
+
+@keyframes idleAnimation {
+    0%, 100% {
+        /* This should generally match the base .button-3d state */
+        transform: rotateX(-10deg) rotateY(0deg) translateZ(0);
+        box-shadow: 0 5px 0 #1e7e34, 0 8px 15px rgba(0,0,0,0.3);
+    }
+    50% {
+        /* MODIFIED: More lift and slight Y rotation for idle */
+        transform: rotateX(-12deg) rotateY(3deg) translateZ(8px); 
+        box-shadow: 0 9px 0 #1e7e34, 0 15px 25px rgba(0,0,0,0.35);
+    }
+}
+
+/* Hover animation placeholder */
+.button-3d:hover {
+    /* MODIFIED: Slightly more dynamic hover, more pronounced shadow */
+    transform: rotateX(-7deg) rotateY(1deg) translateZ(12px) scale(1.08);
+    background-color: #218838; /* Darken button color on hover */
+    box-shadow: 0 10px 0 #1e7e34, /* Larger bottom shadow */
+                0 16px 30px rgba(0,0,0,0.4); /* More pronounced general shadow */
+    text-shadow: 0 2px 2px rgba(0,0,0,0.4); /* ADDED/MODIFIED */
+}
+
+/* Click animation placeholder */
+.button-3d:active {
+    /* MODIFIED: Quick press down effect */
+    transform: rotateX(-2deg) rotateY(0deg) translateZ(3px) scale(0.93);
+    background-color: #1e7e34; /* Even darker on click */
+    box-shadow: 0 1px 0 #1e7e34, /* Reduced bottom shadow */
+                0 3px 8px rgba(0,0,0,0.3); /* Reduced general shadow */
+}
